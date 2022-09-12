@@ -1,4 +1,5 @@
-import Expenses from "./components/Expenses";
+import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
   const expenses = [
@@ -8,8 +9,25 @@ function App() {
     { id: "e4", title: "Keyboard", amount: 99, date: new Date(2022, 2, 4) },
   ];
 
+  const addExpenceHandler = expense => {
+    
+  }
+
+  const saveExpenseDataHandler = (enteredExpenseData) => {
+    const expenseData = {
+      ...enteredExpenseData,
+      id: Math.random().toString()
+    };
+    console.log("In APP.js");
+    console.log(expenseData);
+    expenses.push(expenseData);
+  }
+
   return (
     <div>
+      <NewExpense
+        onSaveExpenseData = {saveExpenseDataHandler} 
+      />
       <Expenses
         expenses = {expenses}
       />
